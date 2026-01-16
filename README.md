@@ -4,6 +4,26 @@
   <img src="demo.gif" width="800"/>
 </p>
 
+## Controls
+
+Once the program launches, an interactive 3D window will appear.
+
+### Mouse Controls
+
+- **Right Click (hold):** Rotate the 3D model  
+- **Scroll Wheel:** Zoom in and out  
+- **Left Click:** Select points  
+
+### Measurement
+
+After selecting **two points**:
+
+- A line is drawn between the selected points in the 3D view
+> ## 📏 Distance Output
+> **The measured Euclidean distance is printed in the terminal window.**
+
+---
+
 ## Script 1: OBJ_to_PLY.cpp
 
 This script converts OBJ files into PLY format.
@@ -106,6 +126,6 @@ Once the program launches, an interactive 3D window will appear.
 
 After selecting **two points**:
 
-- A line is drawn between the selected points in the 3D view  
-- The measured distance is printed in the terminal
+- A line is drawn between the selected points in the 3D view
+> 📏 **The measured Euclidean distance is printed in the terminal window.**
 
