@@ -1,6 +1,8 @@
 # OpenGL Code to Measure Point-to-Point Distance with PLY File
 
-![PLY Point Picker Demo](demo.gif)
+<p align="center">
+  <img src="demo.gif" width="800"/>
+</p>
 
 ## Script 1: OBJ_to_PLY.cpp
 
