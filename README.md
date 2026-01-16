@@ -1,7 +1,5 @@
 # OpenGL Code to Measure Point-to-Point Distance with PLY File
 
----
-
 ## Script 1: OBJ_to_PLY.cpp
 
 This script converts OBJ files into PLY format.
@@ -24,22 +22,24 @@ clang++ OBJ_to_PLY.cpp -o plyOut
 ```bash
 clang++ OBJ_to_PLY.cpp -o plyOut.exe
 ```
+### Run the executable
+
+**macOS**
+```bash
+./plyOut
+```
+
+**Windows**
+```bash
+./plyOut.exe
+```
+---
 
 ## Script 2: `PLY_Mesh_GUI.cpp`
 
 > This script turns the PLY file you uploaded into an interactive OpenGL window showing the point cloud.
 
 You can rotate the model, zoom in/out, and select **two points** to compute their relative distance.
-
----
-
-### Requirements
-
-You must install **GLFW** for OpenGL:
-
-🔗 https://www.glfw.org/download.html
-
----
 
 ### Import PLY File
 
