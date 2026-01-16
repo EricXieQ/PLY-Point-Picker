@@ -1,5 +1,7 @@
 # OpenGL Code to Measure Point-to-Point Distance with PLY File
 
+![PLY Point Picker Demo](demo.gif)
+
 ## Script 1: OBJ_to_PLY.cpp
 
 This script converts OBJ files into PLY format.
