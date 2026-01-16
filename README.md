@@ -102,7 +102,7 @@ PLY_Mesh_GUI.cpp glad/src/glad.c \
 ### Windows
 
 ```bash
- clang++ -std=c++17 PLY_Mesh_GUI.cpp glad\src\glad.c -Iglad\include -Iglfw\include -I. -Lglfw\lib-vc2022 -lglfw3dll -lopengl32 -lgdi32 -luser32 -lkernel32 -o ply_viewer.exe
+ clang++ -std=c++17 PLY_Mesh_GUI.cpp glad\src\glad.c -Iglad\include -Iglfw\include -I. -Lglfw\lib-vc2022 -lglfw3dll -lopengl32 -lgdi32 -luser32 -lkernel32 -lshell32 -o ply_viewer.exe
 ```
 
 These commands will generate an executable named:
