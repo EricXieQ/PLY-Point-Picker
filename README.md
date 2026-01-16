@@ -5,9 +5,6 @@
 </p>
 
 ## Controls
-
-Once the program launches, an interactive 3D window will appear.
-
 ### Mouse Controls
 
 - **Right Click (hold):** Rotate the 3D model  
