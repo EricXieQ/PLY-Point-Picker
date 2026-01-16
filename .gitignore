@@ -1,0 +1,23 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Build outputs
+*.exe
+*.dll
+*.obj
+*.o
+*.a
+*.lib
+*.pdb
+*.ilk
+*.exp
+
+# VS / VS Code
+.vscode/
+.vs/
+*.user
+*.suo
+
+# Logs
+*.log
