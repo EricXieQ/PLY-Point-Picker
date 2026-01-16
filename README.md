@@ -124,5 +124,7 @@ Once the program launches, an interactive 3D window will appear.
 After selecting **two points**:
 
 - A line is drawn between the selected points in the 3D view
+
+> [!WARNING]
 > 📏 **The measured Euclidean distance is printed in the terminal window.**
 
