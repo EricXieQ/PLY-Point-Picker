@@ -110,12 +110,22 @@ void loadPLY(const std::string& filename) {
 }
 
 // Function to get a ray from mouse coordinates using the current camera view and projection matrices
-glm::vec3 getRayFromMouse(double mouseX, double mouseY) {
-    float x = (2.0f * mouseX) / screenWidth - 1.0f;
-    float y = 1.0f - (2.0f * mouseY) / screenHeight;
+glm::vec3 getRayFromMouse(GLFWwindow* window, double mouseX, double mouseY) {
+    // Get the current window size dynamically
+    int width, height;
+    glfwGetWindowSize(window, &width, &height);
+
+    // 1. Normalized Device Coordinates (NDC)
+    float x = (2.0f * (float)mouseX) / (float)width - 1.0f;
+    float y = 1.0f - (2.0f * (float)mouseY) / (float)height;
+
+    // 2. Clip Space to Eye Space
     glm::vec4 ray_clip = glm::vec4(x, y, -1.0f, 1.0f);
     glm::vec4 ray_eye = glm::inverse(projection) * ray_clip;
     ray_eye = glm::vec4(ray_eye.x, ray_eye.y, -1.0f, 0.0f);
+
+    // 3. Eye Space to World Space
+    // Note: We include the model matrix inverse if the model is translated/rotated
     glm::vec3 ray_world = glm::normalize(glm::vec3(glm::inverse(view * model) * ray_eye));
     return ray_world;
 }
@@ -173,7 +183,8 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
     if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
         double xpos, ypos;
         glfwGetCursorPos(window, &xpos, &ypos);
-        glm::vec3 ray = getRayFromMouse(xpos, ypos);
+        // Pass 'window' here
+        glm::vec3 ray = getRayFromMouse(window, xpos, ypos);
         int idx = pickNearestVertex(cameraPos, ray);
         std::cout << "selectedIndices.size(): " << selectedIndices.size() << std::endl;
         if (idx != -1) {
@@ -269,6 +280,13 @@ int main() {
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // Set BACKGROUND color to white
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear the screen
 
+        int width, height;
+        glfwGetFramebufferSize(window, &width, &height); // Use Framebuffer size for the viewport
+        glViewport(0, 0, width, height); 
+        
+        float aspect = (float)width / (float)height;
+        projection = glm::perspective(glm::radians(45.0f), aspect, 0.1f, 100.0f);
+
         view = glm::lookAt(cameraPos, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0)); // Set view matrix to look at the origin
 
         // Orbit camera around the origin using yaw and pitch
@@ -278,11 +296,8 @@ int main() {
         cameraPos = glm::vec3(camX, camY, camZ);
 
         // Identity model matrix (no rotation)
-        model = glm::mat4(1.0f);
         view = glm::lookAt(cameraPos, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
-
-        // Set projection matrix for perspective projection
-        projection = glm::perspective(glm::radians(45.0f), (float)screenWidth / screenHeight, 0.1f, 100.0f);
+        model = glm::mat4(1.0f);
         
         // Use shader program and set uniforms
         glUseProgram(shaderProgram);
