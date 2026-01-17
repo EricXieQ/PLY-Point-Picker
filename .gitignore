@@ -10,6 +10,7 @@ Thumbs.db
 *.pdb
 *.ilk
 *.exp
+*.ply
 
 # VS / VS Code
 .vscode/

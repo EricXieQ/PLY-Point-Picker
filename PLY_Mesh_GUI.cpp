@@ -238,7 +238,7 @@ int main() {
     //////////////////////////////
     //change the ply file here////
     //////////////////////////////
-    loadPLY("3DModel_Custom_copy.ply"); // Load PLY file 
+    loadPLY("3DModel.ply"); // Load PLY file 
 
     //Extract vertex data
     std::vector<float> vertexData;

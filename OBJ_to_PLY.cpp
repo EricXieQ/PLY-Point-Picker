@@ -17,7 +17,7 @@ struct Face {
 int main() {
 
     //create a input stream file called objFile to read 3DModel_Custom_copy.obj
-    std::ifstream objFile("3DModel.obj");
+    std::ifstream objFile("3DModel_Custom.obj");
 
     //see if the file could be open or not. If not give an error.
     if (!objFile.is_open()) {
@@ -71,7 +71,7 @@ int main() {
     objFile.close();
     
         // Write to PLY file
-    std::ofstream plyFile("3DModel_Custom_copy.ply");
+    std::ofstream plyFile("3DModel.ply");
     if (!plyFile.is_open()) {
         std::cerr << "Could not create mesh.ply" << std::endl;
         return 1;
